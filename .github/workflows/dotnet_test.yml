@@ -1,0 +1,17 @@
+name: Dotnet Test
+run-name: Dotnet Test
+on: pull_request_target
+
+jobs:
+  version-check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10'
+    - run: dotnet run HelloWorld.cs
